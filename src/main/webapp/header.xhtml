@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <head>
+      <!--<h:outputStylesheet name="${facesContext.externalContext.requestContextPath}/css/styles.css"/>-->
+   </head>
+   <div style="height: 70px;
+          text-align: left;
+          margin-top: 20px">
+      <h1 style="color: #8d674c">Ricky's Riverside Restaurant</h1>
+   </div>
+   <div style="display: flex;flex-direction: row;
+	           padding:10px;">
+
+      <h:outputLink style="padding-right: 10px" value="View all chicken dishes" outcome="searchResults">
+         <f:param name="searchTerm" value="chicken"/>
+      </h:outputLink>
+      <h:outputLink style="padding-right: 10px" value="search.html">Search the menu</h:outputLink>
+      <h:outputLink value="result.xhtml">Order a meal to collect</h:outputLink>
+      <div style="clear: both;"></div>
+   </div>
+</html>

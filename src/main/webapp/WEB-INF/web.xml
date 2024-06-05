@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+        xmlns="https://jakarta.ee/xml/ns/jakartaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+        version="5.0"
+>
+    <servlet>
+        <servlet-name>facesServlet</servlet-name>
+        <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>facesServlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+
+    <display-name>Ricky's Restaurant</display-name>
+    <description>The menu and online ordering system for Ricky's Restaurant</description>
+
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+    </welcome-file-list>
+
+<!--    <session-config>-->
+<!--        <session-timeout>2</session-timeout>-->
+<!--    </session-config>-->
+
+    <!-- Security roles used by this web application -->
+    <security-role>
+        <role-name>user</role-name>
+    </security-role>
+    <security-role>
+        <role-name>admin</role-name>
+    </security-role>
+
+
+
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>users' allowed pages</web-resource-name>
+            <url-pattern>/index.xhtml</url-pattern>
+            <url-pattern>/result.xhtml</url-pattern>
+            <url-pattern>/thankYou.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>staff pages</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+
+
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>file</realm-name>
+        <form-login-config>
+            <form-login-page>/login.xhtml</form-login-page>
+            <form-error-page>/failed-login.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/403.xhtml</location>
+    </error-page>
+
+
+
+</web-app>

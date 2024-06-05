@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <title>Login</title>
+</head>
+<body>
+<h:form>
+
+    <h:outputLabel for="usernameInput" value="Username:" />
+    <h:inputText id="usernameInput" value="#{loginBean.usernameInput}" required="true" />
+    <h:message for="usernameInput" />
+    <br />
+    <h:outputLabel for="passwordInput" value="Password:" />
+    <h:inputSecret id="passwordInput" value="#{loginBean.passwordInput}" required="true" />
+    <h:message for="passwordInput" />
+    <br />
+    <h:commandButton value="Submit" action="#{loginBean.login}" />
+
+</h:form>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+
+    <title>Order Your Food</title>
+</h:head>
+
+<h:body>
+    <ui:include src="/header.xhtml"/>
+
+
+    <h2>Order your food</h2>
+
+    Thank you - your order has been received. You need to pay
+
+    <h:inputHidden id="customer" value="#{thankYou.customer}"/>
+    <h:inputHidden id="token" value="#{thankYou.accessToken}"/>
+    <h:outputScript name="js/loadMicroFrontend.js" target="head"/>
+    <div id="micro-frontend-container"></div>
+
+
+
+
+    <p>The current status of your order is : <span id="status">#{thankYou.status}</span> <h:commandButton value="refresh status" onclick="refreshStatus()"/>
+    </p>
+
+    <p id="time"></p>
+    <h:outputScript library="js" name="common.js"/>
+    <h:form>
+        <h:commandLink value="Logout" action="#{loginBean.logout}" />
+    </h:form>
+    <ui:include src="/footer.xhtml" />
+</h:body>
+
+
+</html>

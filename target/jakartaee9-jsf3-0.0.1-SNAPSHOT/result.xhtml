@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+   <title>Order Your Food</title>
+</h:head>
+
+<h:body>
+   <ui:include src="/header.xhtml" />
+
+   <h2>Order your food</h2>
+
+   <h:form>
+      <ul>
+         <ui:repeat value="#{order.items}" var="item">
+            <li>#{item}
+               <h:inputText id="item_#{item.id}" value="#{orderReceived.itemQuantities[item.id]}" />
+            </li>
+         </ui:repeat>
+      </ul>
+
+      <h:commandButton value="Submit" action="#{orderReceived.placeOrder}" />
+   </h:form>
+
+   <h:form>
+      <h:commandLink value="Logout" action="#{loginBean.logout}" />
+   </h:form>
+
+   <ui:include src="/footer.xhtml" />
+</h:body>
+</html>

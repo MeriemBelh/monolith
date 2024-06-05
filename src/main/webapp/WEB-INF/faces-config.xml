@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+        xmlns="https://jakarta.ee/xml/ns/jakartaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_3_0.xsd"
+        version="3.0"
+>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{loginBean.login}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/result.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{loginBean.login}</from-action>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/403.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/admin/processorders.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{loginBean.login}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/processorders.xhtml</to-view-id>
+            <redirect/>
+            <!-- Optional: You can specify whether to redirect -->
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{loginBean.login}</from-action>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/403.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    <!-- Put any faces config here. -->
+    <lifecycle>
+        <phase-listener>org.jakab.jakarta.service.AuthenticationPhaseListener</phase-listener>
+    </lifecycle>
+
+</faces-config>

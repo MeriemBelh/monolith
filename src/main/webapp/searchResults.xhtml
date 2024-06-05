@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+   <title>Search Results</title>
+</h:head>
+
+<h:body>
+   <ui:include src="/header.xhtml" />
+
+   <h2>Your search results:</h2>
+   <ul>
+      <c:forEach items="#{search.items}" var="menuItem">
+         <li>#{menuItem}</li>
+      </c:forEach>
+   </ul>
+
+   <ui:include src="/footer.xhtml" />
+</h:body>
+</html>

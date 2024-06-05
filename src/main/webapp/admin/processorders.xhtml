@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+   <title>Update Orders</title>
+</h:head>
+
+<h:body>
+   <ui:include src="/header.xhtml" />
+   <h2>Update Orders</h2>
+
+   <table style="border: 1px solid;">
+      <tr>
+         <th>Order ID</th>
+         <th>Price</th>
+         <th>Status</th>
+      </tr>
+      <ui:repeat value="#{processOrders.orders}" var="processorder" >
+         <tr>
+            <td>#{processorder.id}</td>
+            <td>#{processorder.orderTotal} Dhs</td>
+            <td>
+               <h:form>
+                  <h:inputHidden value="#{processorder.id}" name="id"/>
+                  <h:selectOneMenu value="#{processOrders.selectedOrders[processorder.id]}" name="status">
+
+                     <f:selectItems value="#{processOrders.statuses}" />
+                  </h:selectOneMenu>
+                  <h:commandLink value="Update" action="#{processOrders.updateOrderStatus}"/>
+
+               </h:form>
+            </td>
+         </tr>
+      </ui:repeat>
+      <h:form>
+         <h:commandLink value="Logout" action="#{loginBean.logout}" />
+      </h:form>
+   </table>
+
+   <ui:include src="/footer.xhtml" />
+</h:body>
+</html>

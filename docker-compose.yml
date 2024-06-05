@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+    image: noranorab/jsf-image
+    ports:
+      - "8888:8080"  # Adjust port mapping as needed
+    depends_on:
+      - db
+
+  db:
+    image: buildo/h2database
+    ports:
+      - "1521:1521"  # H2 TCP port
+      - "81:81"      # H2 web console port
+  glassfish:
+    image: glassfish
+    ports:
+      - "4848:4848"  # GlassFish Admin Console port
+      - "8080:8080"  # HTTP port
+    volumes:
+      - ./glassfish:/glassfish/deployments
